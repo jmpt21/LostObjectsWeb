@@ -1,1 +1,89 @@
 /* You can add global styles to this file, and also import other style files */
+html {
+  font-size: 16px;
+}
+
+@font-face {
+  font-family: 'My MT Bold';
+  src: url('assets/fonts/ArialRoundedMTBold.ttf');
+}
+
+@font-face {
+  font-family: 'My Tahoma';
+  src: url('assets/fonts/Tahoma.ttf');
+}
+
+@font-face {
+  font-family: 'My Arial Narrow';
+  src: url('assets/fonts/ArialNarrow7.ttf');
+}
+
+@font-face {
+  font-family: 'My Dubai Medium';
+  src: url('assets/fonts/DubaiMedium.ttf');
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "My MT Bold", sans-serif;
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.8rem;
+}
+
+h3 {
+  font-size: 1.6rem;
+}
+
+h4 {
+  font-size: 1.4rem;
+}
+
+h5 {
+  font-size: 1.2rem;
+}
+
+h6 {
+  font-size: 1rem;
+}
+
+i.fi {
+  display: inline-block;
+  font-size: 1.4rem;
+}
+
+p, a {
+  font-family: "My Tahoma", sans-serif;
+}
+
+nav {
+  background-color: #43b4ff;
+  padding: 5pt;
+  div.col-lg-2, div.col-lg-3, div.col-lg-5 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5pt;
+    color: white;
+  }
+  h1, p, a {
+    text-decoration: none;
+    color: white;
+  }
+}
+
+footer {
+  padding: 5pt;
+  background-color: #5769bc;
+  text-align: center;
+  color: white;
+  a {
+    text-decoration: underline;
+    color: white;
+  }
+}

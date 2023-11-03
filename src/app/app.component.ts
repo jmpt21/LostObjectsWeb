@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'LostObjectsWeb';
+  title: string = 'LOST OBJECTS WEB';
+  logoTecNM: string = 'assets/logos/LogoTecnm1.png'
+  logoITSCH: string = 'assets/logos/LogoTecHidalgo.png'
 }
