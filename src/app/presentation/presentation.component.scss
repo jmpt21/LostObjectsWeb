@@ -10,7 +10,11 @@ section.login {
 }
 
 form {
-  padding-inline: 50pt;
+  padding-inline: 20pt;
+}
+
+#welcome-text {
+  font-size: 1.5rem;
 }
 
 #forgot-password {
@@ -19,4 +23,9 @@ form {
 
 #btn-google {
   cursor: pointer;
+}
+
+#app-logo {
+  max-width: 100%;
+  height: auto;
 }

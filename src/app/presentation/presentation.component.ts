@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {auth, provider} from "../../firebase";
+import { auth, provider } from "../../firebase";
 import { signInWithPopup, signInWithRedirect, GoogleAuthProvider } from "firebase/auth";
 import { FirebaseError } from 'firebase/app';
 
