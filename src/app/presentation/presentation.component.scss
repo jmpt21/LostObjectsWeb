@@ -1,0 +1,22 @@
+section {
+  padding-top: 30pt;
+  padding-bottom: 30pt;
+}
+
+section.login {
+  text-align: center;
+  background-color: #dbe8ff;
+  border-radius: 20pt;
+}
+
+form {
+  padding-inline: 50pt;
+}
+
+#forgot-password {
+  text-align: end;
+}
+
+#btn-google {
+  cursor: pointer;
+}
