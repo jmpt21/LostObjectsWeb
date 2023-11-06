@@ -2,27 +2,25 @@
   <div class="row">
     <div class="col-lg-6">
       <p id="welcome-text">Una forma sencilla para buscar y reportar objetos perdidos en el Instituto Tecnológico Superior de Ciudad Hidalgo.</p>
-      <img ngSrc="{{appLogo}}" priority="1" alt="Lost Objects Web" width="512" height="512" class="mb-5 mt-1" id="app-logo">
+      <img src="assets/logos/AppLogo.png" alt="Lost Objects Web" width="512" height="512" class="mb-5 mt-1" id="app-logo">
     </div>
     <div class="col-lg-6 mt-5">
       <section class="login">
         <h3 class="mb-5">Inicio de sesión</h3>
-        <form class="mb-5" id="login-form">
-          <div class="mb-3">
-            <label for="input_email_login" class="form-label">Correo electrónico:</label>
-            <input type="email" class="form-control" id="input_email_login" placeholder="example@example.com"/>
+        <div class="mb-3">
+          <label for="loginEmail" class="form-label">Correo electrónico:</label>
+          <input type="email" class="form-control" id="loginEmail" placeholder="example@example.com" [(ngModel)]="loginEmail"/>
+        </div>
+        <div class="mb-3">
+          <label for="loginPassword" class="form-label">Contraseña:</label>
+          <input type="password" class="form-control mb-3" id="loginPassword" placeholder="Contraseña" [(ngModel)]="loginPassword"/>
+          <div id="forgot-password">
+            <a href="#">Olvidé mi contraseña</a>
           </div>
-          <div class="mb-3">
-            <label for="input_password_login" class="form-label">Contraseña:</label>
-            <input type="password" class="form-control mb-3" id="input_password_login" placeholder="Contraseña"/>
-            <div id="forgot-password">
-              <a href="#">Olvidé mi contraseña</a>
-            </div>
-          </div>
-          <button type="submit" class="btn btn-primary">Ingresar</button>
-        </form>
+        </div>
+        <button type="submit" class="btn btn-primary" (click)="emailAndPasswordLogin()">Ingresar</button>
         <p>O inicia sesión usando:</p>
-        <img ngSrc="{{googleIcon}}" alt="Google" width="48" height="48" class="mb-4" id="btn-google" (click)="googlePopupLogin()"/>
+        <img src="assets/icons/GoogleIcon.png" alt="Google" width="48" height="48" class="mb-4" id="btn-google" (click)="googlePopupLogin()"/>
         <p>¿No tienes cuenta? Regístrate <a href="#">aquí</a></p>
       </section>
     </div>
