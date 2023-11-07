@@ -7,7 +7,6 @@ import firebase from "firebase/compat";
 import AuthError = firebase.auth.AuthError;
 import { ToastrService } from "ngx-toastr";
 import {FirestoreService} from "../api/firestore.service";
-import {UserDataInterface} from "../entities/user-data.interface";
 
 @Component({
   selector: 'app-presentation',
