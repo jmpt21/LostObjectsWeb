@@ -7,6 +7,8 @@ import {Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
 import {FirebaseAuthService} from "../api/firebase-auth.service";
 import AuthError = firebase.auth.AuthError;
+import { updateProfile } from "firebase/auth";
+import {auth} from "../../firebase";
 
 @Component({
   selector: 'app-register',
@@ -38,9 +40,13 @@ export class RegisterComponent {
     this.isLoading = true
     this.authService.createUser(this.userData.email, this.userData.password)
       .then(() => {
+        updateProfile(auth.currentUser!!, {
+          displayName : `${this.userData.name.trim()} ${this.userData.lastName1} ${this.userData.lastName2.trim()}`,
+        }).then()
         this.firestore.createUserData(this.userData)
           .then(() => {
             this.toast.success('Registro exitoso.', this.registerTitle)
+            this.goToHome()
           })
           .catch((error : FirestoreError) => {
             this.toast.error(this.setErrorMessage(error.code), this.registerTitle)
@@ -67,6 +73,9 @@ export class RegisterComponent {
     }
   }
 
+  goToHome() : void {
+    this.router.navigate(['home']).then().catch()
+  }
   /*trimData(data : UserDataInterface) : UserDataInterface {
     let dataTrim : UserDataInterface = {...data}
     for (let clave in data) {
