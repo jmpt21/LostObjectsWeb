@@ -6,6 +6,8 @@ import { FirebaseError } from 'firebase/app';
 import firebase from "firebase/compat";
 import AuthError = firebase.auth.AuthError;
 import { ToastrService } from "ngx-toastr";
+import {FirestoreService} from "../api/firestore.service";
+import {UserDataInterface} from "../entities/user-data.interface";
 
 @Component({
   selector: 'app-presentation',
@@ -19,7 +21,7 @@ export class PresentationComponent implements OnInit{
 
   isLoading : boolean = false
 
-  constructor(private router : Router, private toast : ToastrService) {
+  constructor(private router : Router, private toast : ToastrService, private firestore : FirestoreService) {
     this.loginEmail = ''
     this.loginPassword = ''
     this.errorMessageLogin = ''
@@ -39,7 +41,7 @@ export class PresentationComponent implements OnInit{
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential?.accessToken;
         const user = result.user;
-          this.toast.success(`Sesión iniciada como: ${user.email}`, `BIENVENIDO`)
+        this.toast.success(`Sesión iniciada como: ${user.email}`, `BIENVENIDO`)
         this.goToHome()
       })
       .catch((_: FirebaseError) => {
