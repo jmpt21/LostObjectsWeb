@@ -1,0 +1,12 @@
+#form-register {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #dbe8ff;
+  border-radius: 20pt;
+  padding: 20pt;
+  input {
+    max-width: 80%;
+  }
+}

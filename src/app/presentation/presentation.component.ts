@@ -17,6 +17,8 @@ export class PresentationComponent implements OnInit{
   loginPassword : string
   errorMessageLogin : string
 
+  isLoading : boolean = false
+
   constructor(private router : Router, private toast : ToastrService) {
     this.loginEmail = ''
     this.loginPassword = ''
@@ -40,8 +42,8 @@ export class PresentationComponent implements OnInit{
           this.toast.success(`Sesión iniciada como: ${user.email}`, `BIENVENIDO`)
         this.goToHome()
       })
-      .catch((error: FirebaseError) => {
-        this.toast.error(error.code, 'Error al iniciar sesión')
+      .catch((_: FirebaseError) => {
+        this.toast.error('No salga de la ventana emergente y espere a que se cierre por si sola.', 'ERROR AL INICIAR SESIÓN')
       })
   }
 
@@ -50,6 +52,7 @@ export class PresentationComponent implements OnInit{
       this.toast.info('Escriba sus credenciales de acceso.', 'INICIO DE SESIÓN')
       return
     }
+    this.isLoading = true
     this.loginEmail.trim()
     signInWithEmailAndPassword(auth, this.loginEmail, this.loginPassword)
       .then(result => {
@@ -59,10 +62,21 @@ export class PresentationComponent implements OnInit{
       .catch((error : AuthError) => {
         this.toast.error(this.setErrorMessage(error.code), 'ERROR AL INICIAR SESIÓN')
       })
+      .finally(() => {
+        this.isLoading = false
+      })
   }
 
   goToHome() : void {
-    this.router.navigate(['home']).then(r => {})
+    this.router.navigate(['home']).then().catch()
+  }
+
+  goToRegister() : void {
+    this.router.navigate(['register']).then().catch()
+  }
+
+  goToForgotPassword() : void {
+    this.router.navigate(['forgot-password']).then().catch()
   }
 
   setErrorMessage(errorCode : string) : string {

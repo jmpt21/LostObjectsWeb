@@ -15,14 +15,19 @@
           <label for="loginPassword" class="form-label">Contraseña:</label>
           <input type="password" class="form-control mb-3" id="loginPassword" placeholder="Contraseña" [(ngModel)]="loginPassword"/>
           <div id="forgot-password">
-            <a href="#">Olvidé mi contraseña</a>
+            <button class="btn btn-link" (click)="goToForgotPassword()">Olvidé mi contraseña</button>
           </div>
         </div>
-        <button type="submit" class="btn btn-primary" (click)="emailAndPasswordLogin()">Ingresar</button>
+        <button *ngIf="!isLoading; else loading" type="submit" class="btn btn-primary mb-4" (click)="emailAndPasswordLogin()">Ingresar</button>
         <p>O inicia sesión usando:</p>
         <img src="assets/icons/GoogleIcon.png" alt="Google" width="48" height="48" class="mb-4" id="btn-google" (click)="googlePopupLogin()"/>
-        <p>¿No tienes cuenta? Regístrate <a href="#">aquí</a></p>
+        <p>¿No tienes cuenta?</p>
+        <button class="btn btn-link" (click)="goToRegister()">Regístrate aquí</button>
       </section>
     </div>
   </div>
 </section>
+
+<ng-template #loading>
+  <div class="spinner-border text-primary" role="status"></div>
+</ng-template>
