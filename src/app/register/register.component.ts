@@ -41,7 +41,7 @@ export class RegisterComponent {
     this.authService.createUser(this.userData.email, this.userData.password)
       .then(() => {
         updateProfile(auth.currentUser!!, {
-          displayName : `${this.userData.name.trim()} ${this.userData.lastName1} ${this.userData.lastName2.trim()}`,
+          displayName : `${this.userData.name.trim()} ${this.userData.lastName1.trim()} ${this.userData.lastName2.trim()}`,
         }).then()
         this.firestore.createUserData(this.userData)
           .then(() => {
