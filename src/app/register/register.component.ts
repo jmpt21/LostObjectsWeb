@@ -85,4 +85,8 @@ export class RegisterComponent {
     }
     return dataTrim
   }*/
+
+  goToLogin() : void {
+    this.router.navigate(['presentation']).then().catch()
+  }
 }

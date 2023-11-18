@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {getRedirectResult, onAuthStateChanged} from "firebase/auth";
+import {onAuthStateChanged} from "firebase/auth";
 import {auth} from "../../firebase";
 import {Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
@@ -16,15 +16,12 @@ export class HomeComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    /*getRedirectResult(auth).then(result => {
-      this.toast.success(`Sesión iniciada como: ${result?.user.email}`, 'BIENVENIDO')
-    })
-
     onAuthStateChanged(auth, (user) => {
-
-    })*/
+      if (user == null) {
+        this.router.navigate(['presentation']).then().catch()
+      }
+    })
   }
-
 
   protected readonly auth = auth;
 }

@@ -35,4 +35,8 @@ export class ForgotPasswordComponent {
         this.isLoading = false
       })
   }
+
+  goToLogin() : void {
+    this.router.navigate(['presentation']).then().catch()
+  }
 }

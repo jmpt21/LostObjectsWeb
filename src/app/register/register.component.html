@@ -3,23 +3,28 @@
     <h3>Registro de usuario</h3>
   </div>
   <div class="row mb-4">
-    <form id="form-register">
-      <p>Datos generales:</p>
-      <hr>
-      <input type="text" name="name" class="form-control" placeholder="Nombre(s)" [(ngModel)]="userData.name" /><br>
-      <input type="text" name="lastName1" class="form-control" placeholder="Primer apellido" [(ngModel)]="userData.lastName1"/><br>
+    <div class="col-lg-6">
+      <form id="form-register">
+        <p>Datos generales:</p>
+        <hr>
+        <input type="text" name="name" class="form-control" placeholder="Nombre(s)" [(ngModel)]="userData.name" /><br>
+        <input type="text" name="lastName1" class="form-control" placeholder="Primer apellido" [(ngModel)]="userData.lastName1"/><br>
 
-      <input type="text" name="lastName2" class="form-control" placeholder="Segundo apellido (opcional)" [(ngModel)]="userData.lastName2" /><br>
-      <input type="tel" name="phoneNumber" class="form-control" placeholder="Número de teléfono" [(ngModel)]="userData.phoneNumber"/><br>
+        <input type="text" name="lastName2" class="form-control" placeholder="Segundo apellido (opcional)" [(ngModel)]="userData.lastName2" /><br>
+        <input type="tel" name="phoneNumber" class="form-control" placeholder="Número de teléfono" [(ngModel)]="userData.phoneNumber"/><br>
 
-      <p>Credenciales de acceso:</p>
-      <hr>
-      <input type="email" name="email" class="form-control" placeholder="example@example.com" [(ngModel)]="userData.email"/><br>
-      <input type="password" name="password" class="form-control" placeholder="Contraseña" pattern=".{6,}" title="Ingrese seis o más caracteres" [(ngModel)]="userData.password" /><br>
+        <p>Credenciales de acceso:</p>
+        <hr>
+        <input type="email" name="email" class="form-control" placeholder="example@example.com" [(ngModel)]="userData.email"/><br>
+        <input type="password" name="password" class="form-control" placeholder="Contraseña" pattern=".{6,}" title="Ingrese seis o más caracteres" [(ngModel)]="userData.password" /><br>
 
-      <button *ngIf="!isLoading; else loading" type="submit" class="btn btn-primary" (click)="onSubmitUserData()">Registrarse</button>
-
-    </form>
+        <button *ngIf="!isLoading; else loading" type="submit" class="btn btn-primary mb-3" (click)="onSubmitUserData()">Registrarse</button>
+        <button type="button" class="btn btn-link" (click)="goToLogin()">Ya estoy registrado</button>
+      </form>
+    </div>
+    <div class="col-lg-6">
+      <img src="assets/pictures/Register.jpg" alt="Registro imagen" title="Registro">
+    </div>
   </div>
 </section>
 

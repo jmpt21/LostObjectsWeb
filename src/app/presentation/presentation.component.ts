@@ -27,11 +27,11 @@ export class PresentationComponent implements OnInit{
   }
 
   ngOnInit() {
-    /*onAuthStateChanged(auth, (user) => {
+    onAuthStateChanged(auth, (user) => {
       if (user != null){
         this.goToHome()
       }
-    })*/
+    })
   }
 
   googlePopupLogin(): void {
