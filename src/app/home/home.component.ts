@@ -30,8 +30,17 @@ export class HomeComponent implements OnInit{
     this.lostObjects = this.firestoreService.getRecentObjects("LostObjects")
   }
 
-  setImage() {
+  async signOut() {
+    await auth.signOut()
+    this.router.navigate(['presentation']).then().catch()
+  }
 
+  goToReports() {
+    this.router.navigate(['report']).then().catch()
+  }
+
+  goToProfile() {
+    this.router.navigate(['profile']).then().catch()
   }
 
   protected readonly auth = auth;

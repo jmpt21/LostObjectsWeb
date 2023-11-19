@@ -1,22 +1,26 @@
 <nav class="container-fluid">
   <div class="row">
     <div class="col-lg-3">
-      <img ngSrc="{{logoTecNM}}" alt="Tecnológico Nacional de México" width="128" height="58">
+      <img ngSrc="{{logoTecNM}}" alt="Tecnológico Nacional de México" width="128" height="58" />
       &nbsp;
-      <img ngSrc="{{logoITSCH}}" alt="ITSCH" height="60" width="48">
+      <img ngSrc="{{logoITSCH}}" alt="ITSCH" height="60" width="48" />
     </div>
     <div class="col-lg-5">
-      <h1>{{title}}</h1>
+      <h1 (click)="goToHome()">{{title}}</h1>
     </div>
     <div class="col-lg-2">
-      <i class="fi fi-br-search"></i>
-      &nbsp;
-      Explorar
+      <button type="button" class="btn btn-toolbar" (click)="goToExplorer()">
+        <i class="fi fi-br-search"></i>
+        &nbsp;
+        Explorar
+      </button>
     </div>
     <div class="col-lg-2">
-      <i class="fi fi-sr-megaphone d-inline"></i>
-      &nbsp;
-      Reportar objeto
+      <button type="button" class="btn btn-toolbar" (click)="goToReport()">
+        <i class="fi fi-sr-megaphone d-inline"></i>
+        &nbsp;
+        Reportar objeto
+      </button>
     </div>
   </div>
 </nav>

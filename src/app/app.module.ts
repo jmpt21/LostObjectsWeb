@@ -11,6 +11,9 @@ import { FormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ToastrModule } from "ngx-toastr";
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ExplorerComponent } from './explorer/explorer.component';
+import { ReportComponent } from './report/report.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,10 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     PresentationComponent,
     RegisterComponent,
     HomeComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    ExplorerComponent,
+    ReportComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

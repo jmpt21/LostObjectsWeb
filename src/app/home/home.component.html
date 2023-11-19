@@ -1,5 +1,45 @@
 <section class="container">
-  <h4 class="mt-4">Bienvenido(a) {{auth.currentUser?.displayName}}!</h4>
+  <h4 class="mt-4 mb-3">Bienvenido(a) {{auth.currentUser?.displayName}}!</h4>
+  <div class="row mb-3">
+    <div class="col-lg-12 actions">
+      <button type="button" class="btn btn-toolbar d-inline" (click)="goToProfile()">
+        <i class="fi fi-rr-user"></i>
+        &nbsp;
+        Mi perfil
+      </button>
+      <button type="button" class="btn btn-toolbar d-inline" (click)="goToReports()">
+        <i class="fi fi-rr-file-invoice"></i>
+        &nbsp;
+        Mis reportes
+      </button>
+      <!-- Botón que activa la alerta -->
+      <button type="button" class="btn btn-toolbar d-inline" data-bs-toggle="modal" data-bs-target="#confirmModal">
+        <i class="fi fi-rr-sign-out-alt"></i>
+        &nbsp;
+        Salir
+      </button>
+
+      <!-- Modal de confirmación -->
+      <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="confirmModalLabel">CERRAR SESIÓN</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+              ¿Estás seguro de que desea cerrar la sesión actual?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="signOut()">Aceptar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
 
   <div class="row">
     <h4>Objetos encontrados recientemente</h4>
