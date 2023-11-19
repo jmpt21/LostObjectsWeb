@@ -1,1 +1,66 @@
-<h4>Bienvenido(a) {{auth.currentUser?.displayName}}!</h4>
+<section class="container">
+  <h4 class="mt-4">Bienvenido(a) {{auth.currentUser?.displayName}}!</h4>
+
+  <div class="row">
+    <h4>Objetos encontrados recientemente</h4>
+    <div class="overflow-auto" style="width: 100%; height: 50%;">
+      <div class="d-flex">
+
+        <div *ngFor="let foundObject of foundObjects | async">
+          <div class="card" style="width: 20rem">
+            <div class="img-object">
+              <img src="{{foundObject.imageUrl}}" class="card-img-top" alt="Objeto" title="Objeto">
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">{{foundObject.title}}</h5>
+              <p class="card-text">{{foundObject.description}}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Ubicación: {{foundObject.location}}</li>
+              <li class="list-group-item">Fecha: {{foundObject.date}}</li>
+              <li class="list-group-item">Publicado por: {{foundObject.username}}</li>
+            </ul>
+            <div class="card-body">
+              Contactar por:&nbsp;
+              <a href="https://wa.me/{{foundObject.phoneNumber}}?text={{encodeURIComponent(messageObject)}}" class="card-link" target="_blank">WhatsApp</a>
+              <a [href]="'tel:' + foundObject.phoneNumber" class="card-link">Llamada</a>
+              <a [href]="'sms:' + foundObject.phoneNumber" class="card-link">Mensaje</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <h4>Objetos perdidos recientemente</h4>
+    <div class="overflow-auto" style="width: 100%; height: 50%">
+      <div class="d-flex">
+
+        <div *ngFor="let lostObject of lostObjects | async">
+          <div class="card" style="width: 20rem">
+            <div class="img-object">
+              <img src="{{lostObject.imageUrl}}" class="card-img-top" alt="Objeto" title="Objeto">
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">{{lostObject.title}}</h5>
+              <p class="card-text">{{lostObject.description}}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Ubicación: {{lostObject.location}}</li>
+              <li class="list-group-item">Fecha: {{lostObject.date}}</li>
+              <li class="list-group-item">Publicado por: {{lostObject.username}}</li>
+            </ul>
+            <div class="card-body">
+              Contactar por:&nbsp;
+              <a href="https://wa.me/{{lostObject.phoneNumber}}?text={{encodeURIComponent(messageObject)}}" class="card-link" target="_blank">WhatsApp</a>
+              <a [href]="'tel:' + lostObject.phoneNumber" class="card-link">Llamada</a>
+              <a [href]="'sms:' + lostObject.phoneNumber" class="card-link">Mensaje</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
