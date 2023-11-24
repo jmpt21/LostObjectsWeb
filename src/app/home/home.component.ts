@@ -5,6 +5,7 @@ import {Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
 import {FirestoreService} from "../api/firestore.service";
 import {ObjectInterface} from "../entities/object.interface";
+import {messageObject} from "../shared/globals";
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,6 @@ import {ObjectInterface} from "../entities/object.interface";
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit{
-  messageObject : string = 'Hola, ví la publicación de tu objeto en Lost Objects Web y tengo información al respecto.'
   foundObjects : Promise<ObjectInterface[]> | undefined
   lostObjects : Promise<ObjectInterface[]> | undefined
 
@@ -31,8 +31,9 @@ export class HomeComponent implements OnInit{
   }
 
   async signOut() {
-    await auth.signOut()
-    this.router.navigate(['presentation']).then().catch()
+    await auth.signOut().then(() => {
+      this.router.navigate(['presentation']).then().catch()
+    })
   }
 
   goToReports() {
@@ -45,4 +46,5 @@ export class HomeComponent implements OnInit{
 
   protected readonly auth = auth;
   protected readonly encodeURIComponent = encodeURIComponent;
+  protected readonly messageObject = messageObject;
 }
