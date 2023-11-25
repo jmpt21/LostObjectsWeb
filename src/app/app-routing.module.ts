@@ -7,6 +7,7 @@ import {ForgotPasswordComponent} from "./forgot-password/forgot-password.compone
 import {ExplorerComponent} from "./explorer/explorer.component";
 import {ProfileComponent} from "./profile/profile.component";
 import {ReportComponent} from "./report/report.component";
+import {MyReportsComponent} from "./my-reports/my-reports.component";
 
 const routes: Routes = [
   { path:'', redirectTo: 'presentation', pathMatch:'full' },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path:'explorer', component: ExplorerComponent },
   { path:'profile', component: ProfileComponent },
   { path:'report', component: ReportComponent },
+  { path:'my-reports', component: MyReportsComponent },
   { path:'**', redirectTo: 'presentation', pathMatch: 'full' },
 ];
 

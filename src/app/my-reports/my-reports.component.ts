@@ -3,11 +3,11 @@ import {Router} from "@angular/router";
 import {auth} from "../../firebase";
 
 @Component({
-  selector: 'app-report',
-  templateUrl: './report.component.html',
-  styleUrls: ['./report.component.scss']
+  selector: 'app-my-reports',
+  templateUrl: './my-reports.component.html',
+  styleUrls: ['./my-reports.component.scss']
 })
-export class ReportComponent {
+export class MyReportsComponent {
 
   constructor(private router : Router) { }
   goToHome() {
@@ -15,9 +15,6 @@ export class ReportComponent {
   }
   goToProfile() {
     this.router.navigate(['profile']).then().catch()
-  }
-  goToMyReports() {
-    this.router.navigate(['my-reports']).then().catch()
   }
   async signOut() {
     await auth.signOut().then(() => {

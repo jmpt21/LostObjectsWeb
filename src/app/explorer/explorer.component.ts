@@ -36,8 +36,8 @@ export class ExplorerComponent {
   goToHome() {
     this.router.navigate(['home']).then().catch()
   }
-  goToReports() {
-    this.router.navigate(['report']).then().catch()
+  goToMyReports() {
+    this.router.navigate(['my-reports']).then().catch()
   }
 
   goToProfile() {

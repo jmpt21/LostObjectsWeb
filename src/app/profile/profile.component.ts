@@ -10,8 +10,8 @@ import {auth} from "../../firebase";
 export class ProfileComponent {
   constructor(private router : Router) { }
 
-  goToReports() {
-    this.router.navigate(['report']).then().catch()
+  goToMyReports() {
+    this.router.navigate(['my-reports']).then().catch()
   }
   goToHome() {
     this.router.navigate(['home']).then().catch()

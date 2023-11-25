@@ -36,8 +36,8 @@ export class HomeComponent implements OnInit{
     })
   }
 
-  goToReports() {
-    this.router.navigate(['report']).then().catch()
+  goToMyReports() {
+    this.router.navigate(['my-reports']).then().catch()
   }
 
   goToProfile() {

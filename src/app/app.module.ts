@@ -14,6 +14,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { ExplorerComponent } from './explorer/explorer.component';
 import { ReportComponent } from './report/report.component';
 import { ProfileComponent } from './profile/profile.component';
+import { MyReportsComponent } from './my-reports/my-reports.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ProfileComponent } from './profile/profile.component';
     ForgotPasswordComponent,
     ExplorerComponent,
     ReportComponent,
-    ProfileComponent
+    ProfileComponent,
+    MyReportsComponent
   ],
   imports: [
     BrowserModule,
