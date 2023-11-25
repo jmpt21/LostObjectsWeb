@@ -22,6 +22,8 @@ export class AppComponent {
     onAuthStateChanged(auth, (user) => {
       if (user != null){
         this.router.navigate(['explorer']).then().catch()
+      } else {
+        this.router.navigate(['presentation']).then().catch()
       }
     })
   }
@@ -30,6 +32,8 @@ export class AppComponent {
     onAuthStateChanged(auth, (user) => {
       if (user != null){
         this.router.navigate(['report']).then().catch()
+      } else {
+        this.router.navigate(['presentation']).then().catch()
       }
     })
   }
