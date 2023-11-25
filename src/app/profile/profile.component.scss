@@ -1,0 +1,19 @@
+.img-content{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#img-user{
+  max-width: 60%;
+  height: auto;
+}
+
+#edit-user-form{
+  padding: 30pt 20pt;
+  background-color: #dbe8ff;
+  border-radius: 20pt;
+}
+
+
