@@ -18,6 +18,7 @@ import {auth} from "../../firebase";
 export class RegisterComponent {
   registerTitle : string = 'REGISTRO DE USUARIO'
   userData : UserDataInterface
+  password : string
 
   isLoading : boolean = false
   constructor(private firestore : FirestoreService, private authService : FirebaseAuthService, private router : Router, private toast : ToastrService) {
@@ -26,19 +27,19 @@ export class RegisterComponent {
       lastName1 : '',
       lastName2 : '',
       phoneNumber : '',
-      email : '',
-      password : ''
+      email : ''
     }
+    this.password = ''
   }
 
   onSubmitUserData () {
-    if (this.userData.name == '' || this.userData.lastName1 == '' || this.userData.phoneNumber == '' || this.userData.email == '' || this.userData.password == '') {
+    if (this.userData.name == '' || this.userData.lastName1 == '' || this.userData.phoneNumber == '' || this.userData.email == '' || this.password == '') {
       this.toast.info('Ingresa todos los campos necesarios.', this.registerTitle)
       return
     }
 
     this.isLoading = true
-    this.authService.createUser(this.userData.email, this.userData.password)
+    this.authService.createUser(this.userData.email, this.password)
       .then(() => {
         updateProfile(auth.currentUser!!, {
           displayName : `${this.userData.name.trim()} ${this.userData.lastName1.trim()} ${this.userData.lastName2.trim()}`,

@@ -5,5 +5,4 @@ export interface UserDataInterface {
   lastName2 : string,
   phoneNumber : string
   email : string
-  password : string
 }

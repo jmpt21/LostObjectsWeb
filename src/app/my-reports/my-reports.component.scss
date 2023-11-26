@@ -1,0 +1,16 @@
+.card-img {
+  max-width: 90%;
+  height: auto;
+}
+
+.grid-all {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+  grid-gap: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+  .grid-all {
+    grid-template-columns: 1fr;
+  }
+}

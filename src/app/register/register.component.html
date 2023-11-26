@@ -23,7 +23,7 @@
         <p>Credenciales de acceso:</p>
         <hr>
         <input type="email" name="email" class="form-control" placeholder="example@example.com" [(ngModel)]="userData.email"/><br>
-        <input type="password" name="password" class="form-control" placeholder="Contraseña" pattern=".{6,}" title="Ingrese seis o más caracteres" [(ngModel)]="userData.password" /><br>
+        <input type="password" name="password" class="form-control" placeholder="Contraseña" pattern=".{6,}" title="Ingrese seis o más caracteres" [(ngModel)]="password" /><br>
 
         <button *ngIf="!isLoading; else loading" type="submit" class="btn btn-primary mb-3" (click)="onSubmitUserData()">Registrarse</button>
         <button type="button" class="btn btn-link" (click)="goToLogin()">Ya estoy registrado</button>

@@ -18,11 +18,7 @@ export class FirestoreService {
 
   async getUserData(email : string) {
     let data = await getDoc(doc(db, "users", email))
-    if (data.exists()) {
-      return data
-    } else {
-      return "unavailable"
-    }
+    return data.data()
   }
 
   async updateUserData(updatedData : UserDataInterface) {

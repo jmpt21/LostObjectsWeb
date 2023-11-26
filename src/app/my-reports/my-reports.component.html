@@ -41,4 +41,38 @@
     <h4>Mis reportes</h4>
   </div>
 
+  <div class="row mb-3">
+    <section class="btn-group">
+      <button class="btn btn-outline-primary" (click)="getMyFoundObjects()">Mis objetos encontrados</button>
+      <button class="btn btn-outline-primary" (click)="getMyLostObjects()">Mis objetos perdidos</button>
+    </section>
+  </div>
+
+  <div class="row">
+    <h5>{{title}}</h5>
+    <div>
+      <div class="grid-all">
+
+        <div *ngFor="let object of objects | async">
+          <div class="card" style="max-width: 100%; height: auto">
+            <div class="card-body">
+              <div class="text-end"><button type="button" class="btn btn-link" (click)="deleteReport(object.reportType!!, object.id!!)">Marcar como devuelto</button></div>
+              <h5 class="card-title">{{object.title}}</h5>
+              <p class="card-text">{{object.description}}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Ubicación: {{object.location}}</li>
+              <li class="list-group-item">Fecha: {{object.date}}</li>
+              <li class="list-group-item">Publicado por: {{object.username}}</li>
+            </ul>
+            <div class="card-img-bottom">
+              <img src="{{object.imageUrl}}" class="card-img" alt="Objeto" title="Objeto">
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
 </section>
