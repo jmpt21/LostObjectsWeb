@@ -41,7 +41,6 @@ export class ReportComponent {
             this.reportObject.username = `${this.userData.name} ${this.userData.lastName1} ${this.userData.lastName2}`
           } else {
             this.router.navigate(['profile']).then().catch()
-            this.toast.error('Completa tu perfil para una mejor experiencia.', 'PERFIL INCOMPLETO')
           }
         })
       }
