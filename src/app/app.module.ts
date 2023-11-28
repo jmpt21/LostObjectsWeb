@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NgOptimizedImage } from "@angular/common";
+import {DatePipe, NgOptimizedImage} from "@angular/common";
 import { PresentationComponent } from './presentation/presentation.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
@@ -38,7 +38,9 @@ import { MyReportsComponent } from './my-reports/my-reports.component';
       positionClass: 'toast-top-center'
     })
   ],
-  providers: [],
+  providers: [
+    DatePipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

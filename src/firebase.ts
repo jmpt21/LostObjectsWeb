@@ -1,9 +1,8 @@
 import { initializeApp } from "firebase/app";
-import {getAuth, onAuthStateChanged} from "firebase/auth";
+import {getAuth} from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 import { GoogleAuthProvider } from "firebase/auth";
-import {Router} from "@angular/router";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDZFm262u2IhkcgpPEw-Tp4JV0UqmSDfhg",

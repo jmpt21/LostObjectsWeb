@@ -48,9 +48,62 @@
 
     </div>
   </div>
+
   <div class="text-center mt-3 mb-3">
     <h4>Publicar reporte de objeto</h4>
   </div>
 
+  <div class="row">
+    <div class="col-lg-6">
+      <img src="assets/pictures/Report.jpg" alt="Reporte" title="Reporte" class="img-fluid mb-3">
+    </div>
+    <div class="col-lg-6">
+      <section id="form-report">
+        <label for="reportDate" class="form-label">Fecha:</label>
+        <input type="date" name="reportDate" id="reportDate" class="form-control" value="{{currentDate}}" [(ngModel)]="reportObject.date" disabled/>
+        <br />
+        <label for="radio-type" class="form-label">Tipo de reporte:</label>
+        <div id="radio-type">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="reportType" value="Found" id="reportType1" [(ngModel)]="reportObject.reportType"/>
+            <label class="form-check-label w-100" for="reportType1">
+              Encontré un objeto
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="reportType" value="Lost" id="reportType2" [(ngModel)]="reportObject.reportType"/>
+            <label class="form-check-label w-100" for="reportType2">
+              Perdí un objeto
+            </label>
+          </div>
+        </div>
+        <br />
+        <label for="reportObject" class="form-label">Objeto:</label>
+        <input type="text" name="reportObject" id="reportObject" class="form-control" placeholder="Título descriptivo" [(ngModel)]="reportObject.title">
+        <br />
+        <label for="reportDescription" class="form-label">Descripción:</label>
+        <div class="form-floating" id="reportDescription">
+          <textarea class="form-control" placeholder="Descripción detallada del objeto" id="descriptionContent" style="height: 100pt" [(ngModel)]="reportObject.description"></textarea>
+          <label for="descriptionContent">Descripción detallada del objeto</label>
+        </div>
+        <br />
+        <label for="reportLocation" class="form-label">Ubicación:</label>
+        <input type="text" name="location" id="reportLocation" class="form-control" [(ngModel)]="reportObject.location"/>
+        <br />
+        <label for="imageReport" class="form-label">Imagen (opcional):</label>
+        <input type="file" name="imageReport" (change)="showImage($event)" class="form-control" id="imageReport" [(ngModel)]="urlImagen"/>
+        <br />
+        <div *ngIf="urlImagen"><button type="button" class="btn btn-danger float-end" (click)="removeImage()">Quitar imagen</button></div>
+        <img *ngIf="urlImagen" [src]="urlImagen" class="img-fluid" alt="Imagen seleccionada" title="Imagen seleccionada"/>
 
+        <div id="submitReport">
+          <button *ngIf="!isLoading; else loading" type="button" class="btn btn-primary" (click)="submitReport()">Publicar reporte</button>
+        </div>
+      </section>
+    </div>
+  </div>
 </section>
+
+<ng-template #loading>
+  <div class="spinner-border text-primary" role="status"></div>
+</ng-template>
