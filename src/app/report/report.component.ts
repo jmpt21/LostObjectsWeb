@@ -54,7 +54,7 @@ export class ReportComponent {
       title : '',
       description : '',
       location : '',
-      date : this.currentDate!!,
+      date : datePipe.transform(this.currentDate!!, 'dd-MM-yyyy')!!,
       reportType : '',
       imageUrl : ''
     }
