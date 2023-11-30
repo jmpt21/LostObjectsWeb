@@ -16,11 +16,15 @@ import {FirestorageService} from "../api/firestorage.service";
 export class MyReportsComponent {
   title : string = 'Reportes de objetos encontrados'
   objects : Promise<ObjectInterface[]> | undefined
+  isEmpty : boolean = false
 
   constructor(private router : Router, private firestore : FirestoreService, private storage : FirestorageService, private toast : ToastrService) {
     onAuthStateChanged(auth, (user) => {
       if (user != null) {
         this.objects = this.firestore.getMyObjects('FoundObjects', auth.currentUser?.email!!)
+        this.objects.then((l) => {
+          this.isEmpty = l.length == 0;
+        })
       }
     })
   }
@@ -28,10 +32,16 @@ export class MyReportsComponent {
   async getMyFoundObjects() {
     this.title = 'Reportes de objetos encontrados'
     this.objects = this.firestore.getMyObjects('FoundObjects', auth.currentUser?.email!!)
+    this.objects.then((l) => {
+      this.isEmpty = l.length == 0;
+    })
   }
   async getMyLostObjects() {
     this.title = 'Reportes de objetos perdidos'
     this.objects = this.firestore.getMyObjects('LostObjects', auth.currentUser?.email!!)
+    this.objects.then((l) => {
+      this.isEmpty = l.length == 0;
+    })
   }
   async deleteReport(object : ObjectInterface) {
     await this.firestore.deleteObject((object.reportType == 'Found') ? 'FoundObjects' : 'LostObjects', object.id!!).then(() => {

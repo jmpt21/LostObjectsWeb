@@ -50,13 +50,13 @@
 
   <div class="row">
     <h5>{{title}}</h5>
-    <div>
+    <div *ngIf="!isEmpty; else nothing">
       <div class="grid-all">
 
         <div *ngFor="let object of objects | async">
           <div class="card" style="max-width: 100%; height: auto">
             <div class="card-body">
-              <div class="text-end"><button type="button" class="btn btn-link" (click)="deleteReport(object)">Marcar como devuelto</button></div>
+              <div class="text-end"><button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#confirmModalDelete">Marcar como devuelto</button></div>
               <h5 class="card-title">{{object.title}}</h5>
               <p class="card-text">{{object.description}}</p>
             </div>
@@ -69,10 +69,36 @@
               <img src="{{object.imageUrl}}" class="card-img" alt="Objeto" title="Objeto">
             </div>
 
+            <div class="modal fade" id="confirmModalDelete" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="confirmModalLabelDelete">CONFIRMACIÓN</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                  </div>
+                  <div class="modal-body">
+                    ¿Está seguro que desea marcar el objeto como devuelto? Ya no será visible para ningún usuario.
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="deleteReport(object)">Aceptar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
       </div>
     </div>
+
+
   </div>
 </section>
+
+<ng-template #nothing>
+  <div class="mt-3 mb-3 text-center">
+    <h3>No se encontraron reportes</h3>
+    <img src="assets/pictures/NoReports.jpg" alt="Sin reportes" title="Sin reportes" class="img-fluid">
+  </div>
+</ng-template>

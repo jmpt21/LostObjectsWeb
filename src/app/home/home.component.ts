@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {onAuthStateChanged} from "firebase/auth";
 import {auth} from "../../firebase";
 import {Router} from "@angular/router";
-import {ToastrService} from "ngx-toastr";
 import {FirestoreService} from "../api/firestore.service";
 import {ObjectInterface} from "../entities/object.interface";
 import {messageObject} from "../shared/globals";
@@ -16,16 +14,16 @@ export class HomeComponent implements OnInit{
   foundObjects : Promise<ObjectInterface[]> | undefined
   lostObjects : Promise<ObjectInterface[]> | undefined
 
-  constructor(private router : Router, private toast : ToastrService, private firestoreService : FirestoreService) {
+  constructor(private router : Router, private firestoreService : FirestoreService) {
 
   }
 
   ngOnInit(): void {
-    onAuthStateChanged(auth, (user) => {
+    /*onAuthStateChanged(auth, (user) => {
       if (user == null) {
         this.router.navigate(['presentation']).then().catch()
       }
-    })
+    })*/
     this.foundObjects = this.firestoreService.getRecentObjects("FoundObjects")
     this.lostObjects = this.firestoreService.getRecentObjects("LostObjects")
   }

@@ -94,7 +94,7 @@
         <input type="file" name="imageReport" (change)="showImage($event)" class="form-control" id="imageReport" [(ngModel)]="urlImagen"/>
         <br />
         <div *ngIf="urlImagen"><button type="button" class="btn btn-danger float-end" (click)="removeImage()">Quitar imagen</button></div>
-        <img *ngIf="urlImagen" [src]="urlImagen" class="img-fluid" alt="Imagen seleccionada" title="Imagen seleccionada"/>
+        <img *ngIf="urlImagen" [src]="urlImagen" class="img-fluid mt-2 mb-2" alt="Imagen seleccionada" title="Imagen seleccionada"/>
 
         <div id="submitReport">
           <button *ngIf="!isLoading; else loading" type="button" class="btn btn-primary" (click)="submitReport()">Publicar reporte</button>

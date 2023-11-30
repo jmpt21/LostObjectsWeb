@@ -56,7 +56,7 @@
         <input type="tel" name="telEdit" id="telEdit" class="form-control mb-2" value="{{userData.phoneNumber}}" [(ngModel)]="userData.phoneNumber"/>
         <label for="emailEdit" class="form-label">Correo electrónico:</label>
         <input type="email" name="emailEdit" id="emailEdit" class="form-control mb-4" value="{{auth.currentUser?.email}}" disabled/>
-        <div class="text-center"><button type="button" *ngIf="!isLoading; else loading" class="btn btn-primary" (click)="submitChanges()">Guardar cambios</button></div>
+        <div class="text-center"><button type="button" *ngIf="!isLoading; else loading" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirmModalSaveChanges">Guardar cambios</button></div>
       </section>
     </div>
   </div>
@@ -65,3 +65,22 @@
 <ng-template #loading>
   <div class="spinner-border text-primary" role="status"></div>
 </ng-template>
+
+<div class="modal fade" id="confirmModalSaveChanges" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="confirmModalLabelSaveChanges">CONFIRMACIÓN DE DATOS</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        Nombre: {{userData.name}} {{userData.lastName1}} {{userData.lastName2}}<br>
+        Teléfono: {{userData.phoneNumber}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="submitChanges()">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>

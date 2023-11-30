@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {auth} from "../../firebase";
 import {UserDataInterface} from "../entities/user-data.interface";
@@ -12,7 +12,7 @@ import {FirebaseError} from "firebase/app";
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
-export class ProfileComponent {
+export class ProfileComponent implements OnInit{
   isLoading = false
   userData : UserDataInterface = {
     name : '',
@@ -21,20 +21,7 @@ export class ProfileComponent {
     phoneNumber : '',
     email : ''
   }
-  constructor(private router : Router, private firestore: FirestoreService, private toast : ToastrService) {
-    onAuthStateChanged(auth, (user) => {
-      if (user != null){
-        this.firestore.getUserData(user.email!!).then((doc) => {
-          if (typeof doc !== "undefined"){
-            this.userData = doc as UserDataInterface
-          } else {
-            this.toast.info('Completa la información en tu perfil para una mejor experiencia.', 'PERFIL INCOMPLETO')
-          }
-        })
-      }
-
-    })
-  }
+  constructor(private router : Router, private firestore: FirestoreService, private toast : ToastrService) { }
 
   submitChanges() {
     this.isLoading = true
@@ -57,6 +44,7 @@ export class ProfileComponent {
     this.firestore.updateUserData(this.userData)
       .then(() => {
         this.toast.success('¡Información actualizada con éxito!', 'ACTUALIZACIÓN')
+        this.goToHome()
       })
       .catch((error : FirebaseError) => {
         this.toast.success(error.message, 'ERROR DE ACTUALIZACIÓN')
@@ -78,4 +66,19 @@ export class ProfileComponent {
   }
 
   protected readonly auth = auth;
+
+  ngOnInit(): void {
+    onAuthStateChanged(auth, (user) => {
+      if (user != null){
+        this.firestore.getUserData(user.email!!).then((doc) => {
+          if (typeof doc !== "undefined"){
+            this.userData = doc as UserDataInterface
+          } else {
+            this.toast.info('Completa la información en tu perfil para una mejor experiencia.', 'PERFIL INCOMPLETO')
+          }
+        })
+      }
+
+    })
+  }
 }
