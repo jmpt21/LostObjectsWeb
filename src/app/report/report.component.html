@@ -60,7 +60,7 @@
     <div class="col-lg-6">
       <section id="form-report">
         <label for="reportDate" class="form-label">Fecha:</label>
-        <input type="date" name="reportDate" id="reportDate" class="form-control" value="{{currentDate}}" [(ngModel)]="currentDate" disabled/>
+        <input type="date" name="reportDate" id="reportDate" class="form-control" value="{{currentDate}}" [(ngModel)]="currentDate" [disabled]="true"/>
         <br />
         <label for="radio-type" class="form-label">Tipo de reporte:</label>
         <div id="radio-type">
